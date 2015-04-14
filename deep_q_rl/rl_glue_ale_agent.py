@@ -93,7 +93,8 @@ class NeuralAgent(Agent):
                             help='Number of steps to minimum epsilon.')
         parser.add_argument('--phi_length', type=int, default=4,
                             help='History length')
-        parser.add_argument('--max_history', type=int, default=300000,
+        parser.add_argument('--max_history', type=int, default=300000, 
+                            #changed from 1M due to RAM constraints
                             help='Maximum number of steps stored')
         parser.add_argument('--batch_size', type=int, default=32,
                             help='Batch size')
