@@ -13,7 +13,7 @@ import cPickle
 net_file = open(sys.argv[1], 'r')
 network = cPickle.load(net_file)
 print network
-w = network.q_layers[2].W.get_value()
+w = network.q_layers[3].W.get_value()
 count = 1
 for f in range(w.shape[3]):
     for c in range(w.shape[0]):

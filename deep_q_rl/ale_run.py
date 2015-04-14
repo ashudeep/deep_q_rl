@@ -66,7 +66,7 @@ def main(args):
     p1 = subprocess.Popen(['rl_glue'], env=my_env, close_fds=close_fds)
 
     # Start ALE
-    command = ['ale', '-game_controller', 'rlglue', '-send_rgb', 'true',
+    command = ['../ale/ale', '-game_controller', 'rlglue', '-send_rgb', 'true',
                '-restricted_action_set', 'true', '-frame_skip',
                str(parameters.frame_skip)]
     if not parameters.merge_frames:

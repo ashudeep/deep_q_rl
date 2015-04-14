@@ -30,7 +30,7 @@ def run_epoch(epoch, num_steps, prefix):
 
     """
     steps_left = num_steps
-    while steps_left > 0:
+    while steps_left > 0:# and steps_left%10000 == 0:
         print prefix + " epoch: ", epoch, "steps_left: ", steps_left
         terminal = RLGlue.RL_episode(steps_left)
         if not terminal:
