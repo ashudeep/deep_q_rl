@@ -71,8 +71,9 @@ def main(args):
 
     # Start ALE
     command = ['../ale/ale', '-game_controller', 'rlglue', '-send_rgb', 'true',
-               '-restricted_action_set', parameters.restricted_action_set, 
                '-frame_skip', str(parameters.frame_skip)]
+    if parameters.restricted_action_set:
+        command.extend['-restricted_action_set', parameters.restricted_action_set]
     if not parameters.merge_frames:
         command.extend(['-disable_color_averaging', 'true'])
     if parameters.display_screen:
