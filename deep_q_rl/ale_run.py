@@ -49,8 +49,8 @@ def main(args):
     parser.add_argument('--glue-port', dest="glue_port", type=int,
                         default=DEFAULT_PORT,
                         help='rlglue port (default: %(default)s)')
-    parser.add_argument('--res-action-set', dest="restricted_action_set", 
-                        action='store_true',
+    parser.add_argument('--res-action-set', action='store_true',
+                         dest="restricted_action_set", 
                         default=False,
                         help='restricted_action_set (default: %(default)s)')
     parameters, unknown = parser.parse_known_args(args)
