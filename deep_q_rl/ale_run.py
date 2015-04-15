@@ -49,7 +49,7 @@ def main(args):
     parser.add_argument('--glue-port', dest="glue_port", type=int,
                         default=DEFAULT_PORT,
                         help='rlglue port (default: %(default)s)')
-    parser.add_argument('--res-action-set', dest="restricted_action_set",  
+    parser.add_argument('--full-action-set', dest="full_action_set",  
                         action='store_true', 
                         default=False,
                         help='restricted_action_set (default: %(default)s)')
@@ -72,7 +72,9 @@ def main(args):
     # Start ALE
     command = ['../ale/ale', '-game_controller', 'rlglue', '-send_rgb', 'true',
                '-frame_skip', str(parameters.frame_skip)]
-    if parameters.restricted_action_set:
+    if parameters.full_action_set:
+        command.extend(['-restricted_action_set', 'false'])
+    else:
         command.extend(['-restricted_action_set', 'true'])
     if not parameters.merge_frames:
         command.extend(['-disable_color_averaging', 'true'])
