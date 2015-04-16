@@ -54,7 +54,7 @@ def main(args):
                         default=False,
                         help='restricted_action_set (default: %(default)s)')
     parameters, unknown = parser.parse_known_args(args)
-
+    
     my_env = os.environ.copy()
     my_env["RLGLUE_PORT"] = str(parameters.glue_port)
 

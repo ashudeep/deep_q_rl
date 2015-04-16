@@ -171,6 +171,7 @@ class NeuralAgent(Agent):
             self.network = cPickle.load(handle)
 
         self._open_results_file()
+        self._open_log_file
         self._open_learning_file()
 
         self.step_counter = 0
@@ -204,6 +205,10 @@ class NeuralAgent(Agent):
                                          approximator='cuda_conv')
         
 
+    def _open_log_file(self):
+        print "Logging the parameters in "+self.exp_dir+"/.log"
+        self.log_file = open(self.exp_dir+'/.log','w',0)
+        self.log_file.write(parameters)
 
     def _open_results_file(self):
         print "OPENING ", self.exp_dir + '/results.csv'
