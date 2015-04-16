@@ -26,8 +26,8 @@ for f in range(w.shape[3]):
         plt.yticks(())
         count += 1
 #Till the time the plt.show() doesn't work
-plt.savefig(sys.argv[3]+".png")
-import os
-os.system("eog "+sys.argv[3]+".png")
+# plt.savefig(sys.argv[3]+".png")
+# import os
+# os.system("eog "+sys.argv[3]+".png")
 #The correct one
-#plt.show()
+plt.show()

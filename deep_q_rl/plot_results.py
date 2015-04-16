@@ -25,8 +25,8 @@ plt.subplot(1, 2, 2)
 plt.plot(results[:, 0], results[:, 4], '--')
 #plt.ylim([0, 4])
 #Till the time the plt.show() doesn't work
-plt.savefig(sys.argv[2]+".png")
-import os
-os.system("eog "+sys.argv[2]+".png")
+# plt.savefig(sys.argv[2]+".png")
+# import os
+# os.system("eog "+sys.argv[2]+".png")
 #The correct one
-#plt.show()
+plt.show()

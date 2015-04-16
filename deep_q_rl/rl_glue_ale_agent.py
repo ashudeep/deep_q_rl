@@ -105,7 +105,7 @@ class NeuralAgent(Agent):
         parser.add_argument('--pause', type=float, default=0,
                             help='Amount of time to pause display while testing.')
         # Create instance variables directy from the arguments:
-        parser.parse_known_args(namespace=self)
+        parameters, unknown = parser.parse_known_args(namespace=self)
 
         # CREATE A FOLDER TO HOLD RESULTS
         time_str = time.strftime("_%m-%d-%H-%M_", time.gmtime())
