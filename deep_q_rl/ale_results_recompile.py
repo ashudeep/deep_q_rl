@@ -14,6 +14,8 @@ import subprocess
 import sys, argparse
 
 DEFAULT_ROM = 'breakout'
+DEFAULT_EPOCHS = 1
+
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('-r', '--rom', dest="rom", default=DEFAULT_ROM,
 	help='ROM to run (default: %(default)s)')
@@ -30,7 +32,8 @@ def run_test(parameters):
 		parser.print_help()
 		exit(1)
 	command = ['./ale_run.py', '--glue-port', '4097', '--steps-per-epoch', '0',
-               '--test-length', '10000', '--nn_file', parameters.nn_file]
+               '--nn_file', parameters.nn_file,
+               '-e', DEFAULT_EPOCHS]
 
 	command.extend(['--rom', parameters.rom])
 	print command

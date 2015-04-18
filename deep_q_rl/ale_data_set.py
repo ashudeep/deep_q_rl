@@ -145,16 +145,18 @@ class DataSet(object):
 
         # Grab random samples until we have enough
         while count < batch_size:
-            index = np.random.randint(self._min_index(), self._max_index()+1)
-            end_index = index + self.phi_length - 1
-            if self.no_terminal(index, end_index):
-                states[count, ...] = self._make_phi(index)
-                actions[count, 0] = self.actions[end_index]
-                rewards[count, 0] = self.rewards[end_index]
-                terminals[count, 0] = self.terminal[end_index+1]
-                next_states[count, ...] = self._make_phi(index+1)
-                count += 1
-
+            try:#Adding temporarily to avoid the low>=high error
+                index = np.random.randint(self._min_index(), self._max_index()+1)
+                end_index = index + self.phi_length - 1
+                if self.no_terminal(index, end_index):
+                    states[count, ...] = self._make_phi(index)
+                    actions[count, 0] = self.actions[end_index]
+                    rewards[count, 0] = self.rewards[end_index]
+                    terminals[count, 0] = self.terminal[end_index+1]
+                    next_states[count, ...] = self._make_phi(index+1)
+                    count += 1
+            except:
+                pass
         return states, actions, rewards, next_states, terminals
 
 
