@@ -107,7 +107,7 @@ class NeuralAgent(Agent):
         parser.add_argument('--exp_dir', type=str, default=None,
                             help='Specify the folder name.')
         # Create instance variables directy from the arguments:
-        parameters, unknown = parser.parse_known_args(namespace=self)
+        self.parameters, unknown = parser.parse_known_args(namespace=self)
 
         # CREATE A FOLDER TO HOLD RESULTS
         if not self.exp_dir:
@@ -211,8 +211,8 @@ class NeuralAgent(Agent):
 
     def _open_log_file(self):
         print "Logging the parameters in "+self.exp_dir+"/.log"
-        self.log_file = open(self.exp_dir+self.exp_dir+'/.log','w',0)
-        self.log_file.write(parameters)
+        self.log_file = open(self.exp_dir+'/'+self.exp_dir+'.log','w',0)
+        self.log_file.write(str(self.parameters))
 
     def _open_results_file(self):
         print "OPENING ", self.exp_dir + '/results.csv'
