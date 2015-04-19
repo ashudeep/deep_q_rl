@@ -156,7 +156,7 @@ class DataSet(object):
                     next_states[count, ...] = self._make_phi(index+1)
                     count += 1
             except:
-                pass
+                break
         return states, actions, rewards, next_states, terminals
 
 

@@ -4,11 +4,10 @@ visualization turned off.
 Usage:
 
 ale_run_watch.py NETWORK_PKL_FILE [ ROM ]
-"""
-'''
+
 __author__ = "Ashudeep Singh"
 __email__ = "ashudeep21@gmail.com"
-'''
+"""
 
 import subprocess
 import sys, argparse

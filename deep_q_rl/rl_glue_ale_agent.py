@@ -104,19 +104,23 @@ class NeuralAgent(Agent):
                             help='Pickle file containing trained net.')
         parser.add_argument('--pause', type=float, default=0,
                             help='Amount of time to pause display while testing.')
+        parser.add_argument('--exp_dir', type=str, default=None,
+                            help='Specify the folder name.')
         # Create instance variables directy from the arguments:
         parameters, unknown = parser.parse_known_args(namespace=self)
 
         # CREATE A FOLDER TO HOLD RESULTS
-        time_str = time.strftime("_%m-%d-%H-%M_", time.gmtime())
-        self.exp_dir = self.exp_pref + time_str + \
-                        "{}".format(self.learning_rate).replace(".", "p") + \
-                        "_" + "{}".format(self.discount).replace(".", "p")
+        if not self.exp_dir:
+            time_str = time.strftime("_%m-%d-%H-%M_", time.gmtime())
+            self.exp_dir = self.exp_pref + time_str + \
+                            "{}".format(self.learning_rate).replace(".", "p") + \
+                            "_" + "{}".format(self.discount).replace(".", "p")
 
         try:
             os.stat(self.exp_dir)
         except:
             os.makedirs(self.exp_dir)
+
 
 
 
@@ -171,7 +175,7 @@ class NeuralAgent(Agent):
             self.network = cPickle.load(handle)
 
         self._open_results_file()
-        self._open_log_file
+        self._open_log_file()
         self._open_learning_file()
 
         self.step_counter = 0
@@ -207,7 +211,7 @@ class NeuralAgent(Agent):
 
     def _open_log_file(self):
         print "Logging the parameters in "+self.exp_dir+"/.log"
-        self.log_file = open(self.exp_dir+'/.log','w',0)
+        self.log_file = open(self.exp_dir+self.exp_dir+'/.log','w',0)
         self.log_file.write(parameters)
 
     def _open_results_file(self):
